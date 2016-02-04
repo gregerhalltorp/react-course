@@ -7,7 +7,8 @@ var gulp = require("gulp"),
 	reactify = require("reactify"),
 	babelify = require("babelify"),
 	source = require("vinyl-source-stream"),
-	concat = require("gulp-concat");
+	concat = require("gulp-concat"),
+	lint = require("gulp-eslint");
 
 var config = {
 	port: 9005,
@@ -20,9 +21,10 @@ var config = {
 			"node_modules/bootstrap/dist/css/bootstrap.min.css",
 			"node_modules/bootstrap/dist/css/bootstrap-theme.min.css",
 		],
-		dist: "./dist"
+		dist: "./dist",
+		eslintConfig: ".eslintrc.json"
 	}
-}
+};
 
 gulp.task("connect", function() {
 	connect.server({
@@ -60,12 +62,18 @@ gulp.task("css", function() {
 		.pipe(concat("bundle.css"))
 		.pipe(gulp.dest(config.paths.dist + "/css"))
 		.pipe(connect.reload());
-})
+});
+
+gulp.task("lint", function() {
+	return gulp.src(config.paths.js)
+		.pipe(lint({config: config.paths.eslintConfig}))
+		.pipe(lint.format());
+});
 
 gulp.task("watch", function() {
 	gulp.watch(config.paths.html, ["html"]);
-	gulp.watch(config.paths.js, ["js"]);
+	gulp.watch(config.paths.js, ["js", "lint"]);
 	gulp.watch(config.paths.css, ["css"]);
 });
 
-gulp.task("default", ["html", "js", "css",	 "open", "watch"]);
+gulp.task("default", ["html", "js", "css",	"lint", "open", "watch"]);
