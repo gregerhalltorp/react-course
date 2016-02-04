@@ -26,3 +26,9 @@ gulp.task("open", ["connect"], function() {
 	gulp.src(config.paths.html + "/index.html")
 		.pipe(open({uri: config.devBaseUrl + ":" + config.port + "/"}));
 });
+
+gulp.task("html", function() {
+	gulp.src(config.paths.html)
+		.pipe(gulp.dest(config.paths.dist))
+		.pipe(connect.reload());
+});
