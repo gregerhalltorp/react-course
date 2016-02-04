@@ -32,3 +32,5 @@ gulp.task("html", function() {
 		.pipe(gulp.dest(config.paths.dist))
 		.pipe(connect.reload());
 });
+
+gulp.task("default", ["html", "open"]);
