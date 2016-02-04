@@ -16,7 +16,7 @@ var config = {
 		html: "./src/*.html",
 		mainJs: "./src/main.js",
 		js: "./src/**/*.js",
-		cs: [
+		css: [
 			"node_modules/bootstrap/dist/css/bootstrap.min.css",
 			"node_modules/bootstrap/dist/css/bootstrap-theme.min.css",
 		],
@@ -68,4 +68,4 @@ gulp.task("watch", function() {
 	gulp.watch(config.paths.css, ["css"]);
 });
 
-gulp.task("default", ["html", "js", "open", "watch"]);
+gulp.task("default", ["html", "js", "css",	 "open", "watch"]);
