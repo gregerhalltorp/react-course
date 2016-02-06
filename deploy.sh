@@ -117,7 +117,7 @@ if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   cd - > /dev/null
 fi
 
-if [ -e "$DEPLOYMENT_TARGET/gulpfile.js"]; then
+if [ -e "$DEPLOYMENT_TARGET/gulpfile.js" ]; then
   cd "$DEPLOYMENT_TARGET"
   eval ".\node_modules\.bin\gulp"
   exitWithMessageOnError "gulp failed"
