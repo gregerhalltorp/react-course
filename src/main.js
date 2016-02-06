@@ -2,7 +2,8 @@ $ = jQuery = require("jquery");
 var
   React = require("react"),
   Home = require("./components/homePage"),
-  About = require("./components/about/aboutPage");
+  About = require("./components/about/aboutPage"),
+  Header = require("./components/common/header");
 
 (function (win) {
   "use strict";
@@ -20,6 +21,7 @@ var
 
       return (
         <div>
+          <Header/>
           <Child/>
         </div>
       );
@@ -32,6 +34,6 @@ var
     React.render(<App route={route}/>, document.getElementById("app"));
   }
 
-  win.addEventListener("haschange", render);
+  win.addEventListener("hashchange", render);
   render();
 })(window);

@@ -4,7 +4,6 @@ var gulp = require("gulp"),
 	connect = require("gulp-connect"),
 	open = require("gulp-open"),
 	browserify = require("browserify"),
-	reactify = require("reactify"),
 	babelify = require("babelify"),
 	source = require("vinyl-source-stream"),
 	concat = require("gulp-concat"),
@@ -21,15 +20,16 @@ var config = {
 			"node_modules/bootstrap/dist/css/bootstrap.min.css",
 			"node_modules/bootstrap/dist/css/bootstrap-theme.min.css",
 		],
+    images: "./src/images/*",
 		dist: "./dist",
 		eslintConfig: ".eslintrc.json"
 	}
 };
+//port: config.port,
 
 gulp.task("connect", function() {
 	connect.server({
 		root: ["dist"],
-		port: config.port,
 		base: config.devBaseUrl,
 		livereload: true
 	});
@@ -64,6 +64,15 @@ gulp.task("css", function() {
 		.pipe(connect.reload());
 });
 
+gulp.task("images", function() {
+  gulp.src(config.paths.images)
+    .pipe(gulp.dest(config.paths.dist + "/images"))
+    .pipe(connect.reload());
+
+  gulp.src("./src/favicon.ico")
+    .pipe(gulp.dest(config.paths.dist));
+});
+
 gulp.task("lint", function() {
 	return gulp.src(config.paths.js)
 		.pipe(lint({config: config.paths.eslintConfig}))
@@ -76,4 +85,4 @@ gulp.task("watch", function() {
 	gulp.watch(config.paths.css, ["css"]);
 });
 
-gulp.task("default", ["html", "js", "css",	"lint", "open", "watch"]);
+gulp.task("default", ["html", "js", "css", "images",	"lint", "open", "watch"]);
