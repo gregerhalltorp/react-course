@@ -26,10 +26,10 @@
     "react": "^0.13.3",
     "react-router": "^0.13.3",
     "reactify": "^1.1.1",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "eslint-plugin-react": "^3.16.1"
   },
   "devDependencies": {
-    "eslint-config-google": "^0.3.0",
-    "eslint-plugin-react": "^3.16.1"
+    "eslint-config-google": "^0.3.0"
   }
 }
