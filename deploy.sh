@@ -119,7 +119,7 @@ fi
 
 if [ -e "$DEPLOYMENT_TARGET/gulpfile.js" ]; then
   cd "$DEPLOYMENT_TARGET"
-  eval "./node_modules/.bin/gulp"
+  eval "./node_modules/.bin/gulp azure-build"
   exitWithMessageOnError "gulp failed"
   cd - > /dev/null
 fi
