@@ -3,6 +3,7 @@ var
   React = require("react"),
   Home = require("./components/homePage"),
   About = require("./components/about/aboutPage"),
+  Authors = require("./components/authors/authorPage"),
   Header = require("./components/common/header");
 
 (function (win) {
@@ -14,6 +15,9 @@ var
       switch (this.props.route) {
         case "about":
           Child = About;
+          break;
+        case "authors":
+          Child = Authors;
           break;
         default:
           Child = Home;

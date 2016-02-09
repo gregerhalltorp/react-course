@@ -27,11 +27,11 @@ var config = {
 		root: "./"
 	}
 };
-//port: config.port,
 
 gulp.task("connect", function() {
 	connect.server({
 		root: ["dist"],
+    port: config.port,
 		base: config.devBaseUrl,
 		livereload: true
 	});
