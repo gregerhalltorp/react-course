@@ -1,10 +1,13 @@
 "use strict";
 
-var React = require("react");
-var AuthorApi = require("../../api/authorApi");
-var AuthorList = require("./authorList");
+var
+  React = require("react"),
+  AuthorApi = require("../../api/authorApi"),
+  AuthorList = require("./authorList"),
+  Router = require("react-router"),
+  Link = Router.Link;
 
-var Authors = React.createClass({
+var AuthorPage = React.createClass({
   getInitialState: function () {
     return {
       authors: []
@@ -21,10 +24,11 @@ var Authors = React.createClass({
     return (
       <div>
         <h1>Authors</h1>
-        <AuthorList authors={this.state.authors} />
+        <Link to="addAuthor" className="btn btn-default">Add Author</Link>
+        <AuthorList authors={this.state.authors}/>
       </div>
     );
   }
 });
 
-module.exports = Authors;
+module.exports = AuthorPage;
