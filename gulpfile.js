@@ -20,6 +20,7 @@ var config = {
     css: [
       "node_modules/bootstrap/dist/css/bootstrap.min.css",
       "node_modules/bootstrap/dist/css/bootstrap-theme.min.css",
+      "node_modules/toastr/build/toastr.css"
     ],
     images: "./src/images/*",
     dist: "./dist",
